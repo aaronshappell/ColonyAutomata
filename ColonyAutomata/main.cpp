@@ -1,13 +1,20 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-using namespace std;
+int width = 200;
+int height = 200;
 
 int main(){
-	sf::RenderWindow window(sf::VideoMode(200, 200), "Colony Automata");
-	sf::CircleShape shape(50);
-	shape.setFillColor(sf::Color::White);
-	cout << "meow" << endl;
+	sf::RenderWindow window(sf::VideoMode(width, height), "Colony Automata");
+
+	sf::Image pixelBuffer;
+	pixelBuffer.create(width, height, sf::Color::White);
+
+	sf::Texture pixelTexture;
+	pixelTexture.loadFromImage(pixelBuffer);
+
+	sf::Sprite pixelSprite;
+	pixelSprite.setTexture(pixelTexture);
 
 	while(window.isOpen()){
 		sf::Event event;
@@ -16,8 +23,8 @@ int main(){
 				window.close();
 			}
 		}
-		window.clear();
-		window.draw(shape);
+		window.clear(sf::Color::Black);
+		window.draw(pixelSprite);
 		window.display();
 	}
 
