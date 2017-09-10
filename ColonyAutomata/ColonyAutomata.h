@@ -13,4 +13,8 @@ private:
 	sf::Image pixelBuffer;
 	sf::Texture pixelTexture;
 	sf::Sprite pixelSprite;
+	void update(float delta);
+	void render();
+	void pollInput(float delta);
+	void pollEvents();
 };
