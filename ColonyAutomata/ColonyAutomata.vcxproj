@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="ColonyAutomata.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColonyAutomata.h" />
+    <ClInclude Include="Person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
