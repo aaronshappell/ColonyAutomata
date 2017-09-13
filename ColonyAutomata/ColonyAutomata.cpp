@@ -10,13 +10,22 @@ ColonyAutomata::ColonyAutomata(int width, int height) : window(sf::VideoMode(wid
 
 void ColonyAutomata::run(){
 	sf::Clock clock;
+	float targetDelta = 1.0f / 60.0f;
+	int updateLimit = 10;
+	int updateCount = 0;
+	float accumulator = 0.0f;
 	while(window.isOpen()){
 		float delta = clock.restart().asSeconds();
-		std::cout << delta << std::endl;
-		pollEvents();
-		pollInput(delta);
-		update(delta);
+		accumulator += delta;
+		while(accumulator >= targetDelta && updateCount < updateLimit){
+			pollEvents();
+			pollInput(delta);
+			update(delta);
+			accumulator -= delta;
+			updateCount++;
+		}
 		render();
+		std::cout << "\rfps: " << 1.0f / delta;
 	}
 }
 
