@@ -31,8 +31,9 @@ void ColonyAutomata::run(){
 	while(window.isOpen()){
 		float delta = clock.restart().asSeconds();
 		accumulator += delta;
+		updateCount = 0;
 		while(accumulator >= targetDelta && updateCount < updateLimit){
-			pollEvents();
+			//pollEvents();
 			pollInput(delta);
 			update(delta);
 			accumulator -= delta;
@@ -64,6 +65,9 @@ void ColonyAutomata::pollInput(float delta){
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 		pixelSprite.move(sf::Vector2f(100, 0) * delta);
+	}
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+		window.close();
 	}
 }
 
