@@ -24,8 +24,8 @@ ColonyAutomata::~ColonyAutomata(){
 
 void ColonyAutomata::run(){
 	sf::Clock clock;
-	float targetDelta = 1.0f / 60.0f;
-	int updateLimit = 10;
+	const float targetDelta = 1.0f / 60.0f;
+	const int updateLimit = 10;
 	int updateCount = 0;
 	float accumulator = 0.0f;
 	while(window.isOpen()){
